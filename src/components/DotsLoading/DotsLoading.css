@@ -1,0 +1,18 @@
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#spinner {
+    min-width: 30px;
+    min-height: 30px;
+    border: 5px solid rgba(194, 88, 88, 0.007);
+    border-right: 5px solid rgb(0, 132, 255);
+    background-color: rgba(46, 43, 43, 0.267);
+    border-radius: 50%;
+    animation: spinner 1s linear infinite;
+}
