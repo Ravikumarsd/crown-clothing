@@ -6,8 +6,9 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.styles.scss";
 import DotsLoading from "../DotsLoading/DotsLoading";
 import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropDown from "../cart-dropdown/cart-dropdown.component";
 
-const Header = ({ currentUser, loading }) => (
+const Header = ({ currentUser, loading, hidden }) => (
   <div className="header">
     <Link className="logo-container" to="/">
       <Logo className="logo" />
@@ -39,15 +40,19 @@ const Header = ({ currentUser, loading }) => (
         </Link>
       )}
       <CartIcon />
+      {hidden ? null : <CartDropDown />}
     </div>
   </div>
 );
 
-const mapStateToProps = (state) => {
-  console.log("state ===>>", state);
+const mapStateToProps = ({
+  user: { currentUser, loading },
+  cart: { hidden },
+}) => {
   return {
-    currentUser: state.user.currentUser,
-    loading: state.user.loading,
+    currentUser: currentUser,
+    loading: loading,
+    hidden: hidden,
   };
 };
 
